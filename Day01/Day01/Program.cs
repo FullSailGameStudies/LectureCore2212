@@ -30,9 +30,16 @@ namespace Day01
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-            //Method basics: return type, parameters
+            //Variable basics
+            //<type> <name>
+            int age = 12;
 
-            //Parameters: Pass by Value
+            //Method basics: return type, parameters
+            int sum = Add(5, 2);
+            int n1 = 15, n2 = 420;
+
+            //Parameters: Pass by Value (COPY)
+            sum = Add(n1, n2);//n1 is COPIED to num1
 
             //Parameters: Pass by Reference
 
@@ -43,6 +50,12 @@ namespace Day01
             LectureChallenges();
 
             Console.ReadKey(true);
+        }
+
+        static int Add(int num1, int num2)
+        {
+            //int num1 = 5, num2 = 2;
+            return num1 + num2;
         }
 
         static void LectureChallenges()
@@ -68,15 +81,15 @@ namespace Day01
             //      Add code to move _deadpool to the goal using the Move methods of the GameObject class.
             //
             //-------------------------------------------------------------------------------------------
-
-
+            for (int i = 0; i < 6; i++)
+                _deadpool.MoveRight();
 
 
 
             //-------------------------------------------------------------------------------------------
             _deadpool.DrawMe();
 
-            if (_deadpool.X == _goal.X && _deadpool.Y == _goal.Y)
+            if (Collision(_deadpool, _goal))
             {
                 Graphics.ShowResult(true);
             }
@@ -102,7 +115,16 @@ namespace Day01
         //
         //  Call Collision in place of the conditions in this line: if (_deadpool.X == _goal.X && _deadpool.Y == _goal.Y)
         //-------------------------------------------------------------------------------------------
-
+        static bool Collision(GameObject obj1, GameObject obj2)
+        {
+            //bool isCollision = false;
+            //if (obj1.X == obj2.X && obj1.Y == obj2.Y)
+            //{
+            //    return true;//isCollision = true;
+            //}
+            //return false;
+            return obj1.X == obj2.X && obj1.Y == obj2.Y;
+        }
 
         //-------------------------------------------------------------------------------------------
         //
