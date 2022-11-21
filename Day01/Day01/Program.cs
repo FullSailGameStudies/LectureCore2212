@@ -151,6 +151,7 @@ namespace Day01
         //-------------------------------------------------------------------------------------------
         //
         // PART 3 - Ref parameters
+        //  https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/ref
         //      Create a method called Colors.
         //          Parameters: 2 ConsoleColor variables. one for the foreground and one for the background
         //          The method should set them to whatever colors you want.
@@ -166,6 +167,7 @@ namespace Day01
         //-------------------------------------------------------------------------------------------
         //
         // PART 4 - Out parameters
+        //  https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/out-parameter-modifier
         //      Create a method called Teleport.
         //          Parameters: 2 out parameters. one for the int x position and one for the int y position
         //          Randomly set them to valid x & y positions in the window.
