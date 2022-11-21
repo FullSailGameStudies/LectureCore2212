@@ -45,13 +45,21 @@ namespace Day01
             int randomFactor = 1;
             int product = Factor(n1,ref randomFactor);
 
-            //Parameters: Out Parameters
+            //Parameters: Out Parameters (special pass by reference)
+            product = Product(n1, out int rando);//don't have to initialize when calling the method
 
             //Parameters: optional parameters
 
             LectureChallenges();
 
             Console.ReadKey(true);
+        }
+
+        private static int Product(int number, out int random)//the method MUST assign a value to random
+        {
+            Random randy = new Random();
+            random = randy.Next(101);
+            return number * random;
         }
 
         private static int Factor(int num1, ref int ranFactor)
@@ -79,8 +87,12 @@ namespace Day01
             Console.WriteLine("Press any key to start your code.");
 
             //call the PART 3 method to get 2 colors to set Fore and Back
-            _deadpool.Fore = ConsoleColor.White;
-            _deadpool.Back = ConsoleColor.Red;
+            ConsoleColor fColor = ConsoleColor.White;
+            ConsoleColor bColor = ConsoleColor.Red;
+            Colors(ref fColor, ref bColor);
+
+            _deadpool.Fore = fColor;
+            _deadpool.Back = bColor;
             _deadpool.DrawMe();
 
             Console.ReadKey(true);
@@ -145,7 +157,11 @@ namespace Day01
         //
         // Call the Colors method before the PART 1 code. Use the colors to update the Fore and Back colors of the _deadpool object
         //-------------------------------------------------------------------------------------------
-
+        static void Colors(ref ConsoleColor fore, ref ConsoleColor back)
+        {
+            fore = ConsoleColor.DarkCyan;
+            back = ConsoleColor.Yellow;
+        }
 
         //-------------------------------------------------------------------------------------------
         //
