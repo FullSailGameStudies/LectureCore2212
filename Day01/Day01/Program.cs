@@ -41,7 +41,9 @@ namespace Day01
             //Parameters: Pass by Value (COPY)
             sum = Add(n1, n2);//n1 is COPIED to num1
 
-            //Parameters: Pass by Reference
+            //Parameters: Pass by Reference (ALIAS)
+            int randomFactor = 1;
+            int product = Factor(n1,ref randomFactor);
 
             //Parameters: Out Parameters
 
@@ -50,6 +52,13 @@ namespace Day01
             LectureChallenges();
 
             Console.ReadKey(true);
+        }
+
+        private static int Factor(int num1, ref int ranFactor)
+        {
+            Random randy = new Random();
+            ranFactor = randy.Next(101);
+            return num1 * ranFactor;
         }
 
         static int Add(int num1, int num2)
@@ -69,6 +78,7 @@ namespace Day01
             Console.SetCursorPosition(0, 4);
             Console.WriteLine("Press any key to start your code.");
 
+            //call the PART 3 method to get 2 colors to set Fore and Back
             _deadpool.Fore = ConsoleColor.White;
             _deadpool.Back = ConsoleColor.Red;
             _deadpool.DrawMe();
