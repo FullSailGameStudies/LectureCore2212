@@ -114,6 +114,7 @@ namespace Day01
             if (Collision(_deadpool, _goal))
             {
                 Graphics.ShowResult(true);
+                Celebrate();
             }
             else
             {
@@ -122,8 +123,28 @@ namespace Day01
 
             // Call the Teleport method to get a random x and y
             //  use the random x and y variables to update the X and Y properties of the _deadpool object
+            Teleport(out int x, out int y);
+            _deadpool.X = x;
+            _deadpool.Y = y;
 
             _deadpool.DrawMe();
+        }
+
+        private static void Celebrate()
+        {
+            ConsoleColor fColor = ConsoleColor.White;
+            ConsoleColor bColor = ConsoleColor.Red;
+            while (true)
+            {
+                Colors(ref fColor, ref bColor);
+
+                _deadpool.Fore = fColor;
+                _deadpool.Back = bColor;
+                Teleport(out int x, out int y);
+                _deadpool.X = x;
+                _deadpool.Y = y;
+                _deadpool.DrawMe();
+            }
         }
 
         //-------------------------------------------------------------------------------------------
@@ -160,8 +181,9 @@ namespace Day01
         //-------------------------------------------------------------------------------------------
         static void Colors(ref ConsoleColor fore, ref ConsoleColor back)
         {
-            fore = ConsoleColor.DarkCyan;
-            back = ConsoleColor.Yellow;
+            Random rando = new Random();
+            fore = (ConsoleColor)rando.Next(16);// ConsoleColor.DarkCyan;
+            back = (ConsoleColor)rando.Next(16); //ConsoleColor.Yellow;
         }
 
         //-------------------------------------------------------------------------------------------
@@ -176,7 +198,12 @@ namespace Day01
         // At the end of the LectureChallenges method, call the Teleport method to get a random x and y.
         // Use the random x and y variables to update the X and Y properties of the _deadpool object.
         //-------------------------------------------------------------------------------------------
-
+        static void Teleport(out int x, out int y)
+        {
+            Random rando = new Random();
+            x = rando.Next(Console.WindowWidth);
+            y = rando.Next(Console.WindowHeight);
+        }
 
 
         #region Symbols
