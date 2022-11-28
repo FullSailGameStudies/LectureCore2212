@@ -8,7 +8,8 @@ namespace Day02
     {
         static void Main(string[] args)
         {
-            Course pg2 = new Course() { Name = "PG2 - 2211" };
+            ArrayChallenge();
+            Course pg2 = new Course() { Name = "PG2 - 2212" };
 
             while (true)
             {
@@ -25,6 +26,7 @@ namespace Day02
                             //  Initialize the _grades list
                             //  add 10 random grades 
                             //call FillGrades here 
+                            pg2.FillGrades();
                             break;
                         case 2:
                             //Add a method PrintGrades to the Course class
@@ -63,6 +65,31 @@ namespace Day02
                 else
                     break;
             }
+        }
+
+        private static void ArrayChallenge()
+        {
+            string[] supes = new string[4] { "Batman", "Wonder Woman", "Superman", "Aquaman" };
+            for (int i = 0; i < supes.Length; i++)
+            {
+                Console.WriteLine(supes[i]);
+            }
+
+            Console.ReadKey();
+
+            //resizing is a "pain"
+            string[] temp = new string[supes.Length + 1];
+            for (int i = 0; i < supes.Length; i++)
+            {
+                temp[i] = supes[i];
+            }
+            temp[temp.Length - 1] = "Green Lantern";
+            supes = temp;
+
+            List<string> supers = new List<string>() { "Batman" };
+            supers.Add("Superman");
+            supers.Add("Wonder Woman");
+            supers.Add("Aquaman");
         }
     }
 }
