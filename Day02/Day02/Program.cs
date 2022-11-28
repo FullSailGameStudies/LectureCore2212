@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace Day02
@@ -76,10 +77,13 @@ namespace Day02
 
         private static void ArrayChallenge()
         {
-            string[] supes = new string[4] { "Batman", "Wonder Woman", "Superman", "Aquaman" };
+            string superNames = "Batman,Wonder Woman,Superman,,Aquaman;Joker;;;Riddler;Penguin;GorrilaGrodd;";
+
+            char[] delimiters = new char[] { ',', ';' };
+            string[] supes = superNames.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);// new string[4] { "Batman", "Wonder Woman", "Superman", "Aquaman" };
             for (int i = 0; i < supes.Length; i++)
             {
-                Console.WriteLine(supes[i]);
+                Console.WriteLine($"{i+1}.{supes[i]}");
             }
 
             //to clone an array or List
