@@ -42,14 +42,19 @@ namespace Day02
                             //  return the number of grades removed
                             //call DropFailing here and print the number of grades removed
                             //call PrintGrades here
+                            int numDropped = pg2.DropFailing();
+                            pg2.PrintGrades();
+                            Console.WriteLine($"Dropped {numDropped} grades.");
                             break;
                         case 4:
                             //Add a method CurveGrades(amount) to the Course class
                             //  clone the _grades list
                             //  loop over the cloned list
-                            //      curve the grades
+                            //      curve the grades (add the amount to each grade)
                             //  return the curved list
                             //call CurveGrades here 
+                            List<double> curved = pg2.CurveGrades(5);
+                            pg2.PrintGrades(curved);
                             break;
                         case 5:
                             //Add a PrintData(string) method to the SplitText class
@@ -77,6 +82,9 @@ namespace Day02
                 Console.WriteLine(supes[i]);
             }
 
+            //to clone an array or List
+            List<string> clone1 = supes.ToList();
+            List<string> clone2 = new List<string>(supes);
 
             //resizing is a "pain"
             string[] temp = new string[supes.Length + 1];
@@ -93,6 +101,7 @@ namespace Day02
             PrintDetails(supers);//Count:  Capacity: 
             supers.Add("Wonder Woman");
             supers.Add("Aquaman");
+            supers.Add("Aquaman");
             supers.Add("Green Latern");//Count:4  Capacity: 4
             supers.Add("Flash");
             PrintDetails(supers);//Count:5  Capacity: ?
@@ -101,6 +110,11 @@ namespace Day02
             supers.Add("Cyborg");
             supers.Add("Beast Boy");//Count:9  Capacity: 16
             PrintDetails(supers);
+            supers.Remove("Aquaman");
+            supers.RemoveAt(2);
+
+            List<string> JLA = supers;//NOT a clone
+
 
             Console.WriteLine("List of Superheroes");
             for (int i = 0; i < supers.Count; i++)

@@ -8,7 +8,7 @@ namespace Day02
 {
     public class Course
     {
-        private List<double> _grades = new List<double>();
+        private List<double> _grades = new List<double>(10);
 
         public string Name { get; set; } = string.Empty;
 
@@ -22,14 +22,50 @@ namespace Day02
             }
         }
 
-        public void PrintGrades()
+        public void PrintGrades(List<double> gradesToPrint = null)
         {
+            if (gradesToPrint == null) gradesToPrint = _grades;
             //$ - interpolated string
             Console.WriteLine($"Grades for {Name}");
-            for (int i = 0; i < _grades.Count; i++)
+            for (int i = 0; i < gradesToPrint.Count; i++)
             {
-                Console.WriteLine(_grades[i]);
+                Console.WriteLine(gradesToPrint[i]);
             }
+        }
+
+        public int DropFailing()
+        {
+            int numberDropped = 0;
+            //for (int i = 0; i < _grades.Count; i++)
+            //{
+            //    if (_grades[i] < 59.5)
+            //    {
+            //        numberDropped++;
+            //        _grades.RemoveAt(i);
+            //        i--;
+            //    }
+            //}
+            //reverse for loop
+            for (int i = _grades.Count - 1; i >= 0; i--)
+            {
+                if (_grades[i] < 59.5)
+                {
+                    numberDropped++;
+                    _grades.RemoveAt(i);
+                }
+            }
+            return numberDropped;
+        }
+
+        public List<double> CurveGrades(int amount)
+        {
+            List<double> clone = _grades.ToList();
+            for (int i = 0; i < clone.Count; i++)
+            {
+                //ternary operator
+                clone[i] = (clone[i] + amount <= 100) ? clone[i] + amount : 100;
+            }
+            return clone;
         }
     }
 }
