@@ -21,6 +21,16 @@ namespace Day02
                 _grades.Add(rando.NextDouble() * 100);
             }
         }
+
+        public void PrintGrades()
+        {
+            //$ - interpolated string
+            Console.WriteLine($"Grades for {Name}");
+            for (int i = 0; i < _grades.Count; i++)
+            {
+                Console.WriteLine(_grades[i]);
+            }
+        }
     }
 }
 

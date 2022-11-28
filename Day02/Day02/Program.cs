@@ -33,6 +33,7 @@ namespace Day02
                             //  loop over the _grades list
                             //      print each grade
                             //call PrintGrades here
+                            pg2.PrintGrades();
                             break;
                         case 3:
                             //Add a method DropFailing to the Course class
@@ -64,6 +65,7 @@ namespace Day02
                 }
                 else
                     break;
+                Console.ReadKey();
             }
         }
 
