@@ -62,7 +62,7 @@ namespace Day02
             List<double> clone = _grades.ToList();
             for (int i = 0; i < clone.Count; i++)
             {
-                //ternary operator
+                //C# ternary operator
                 clone[i] = (clone[i] + amount <= 100) ? clone[i] + amount : 100;
             }
             return clone;
