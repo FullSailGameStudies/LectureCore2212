@@ -8,9 +8,19 @@ namespace Day02
 {
     public class Course
     {
-        private List<double> _grades;
+        private List<double> _grades = new List<double>();
 
         public string Name { get; set; } = string.Empty;
+
+        public void FillGrades()
+        {
+            //_grades = new List<double>();//initialize my list
+            Random rando = new Random();
+            for (int i = 0; i < 10; i++)
+            {
+                _grades.Add(rando.NextDouble() * 100);
+            }
+        }
     }
 }
 
