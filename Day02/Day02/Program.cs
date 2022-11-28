@@ -75,7 +75,6 @@ namespace Day02
                 Console.WriteLine(supes[i]);
             }
 
-            Console.ReadKey();
 
             //resizing is a "pain"
             string[] temp = new string[supes.Length + 1];
@@ -86,10 +85,34 @@ namespace Day02
             temp[temp.Length - 1] = "Green Lantern";
             supes = temp;
 
-            List<string> supers = new List<string>() { "Batman" };
+            List<string> supers = new List<string>();// { "Batman" };
+            PrintDetails(supers);
             supers.Add("Superman");
+            PrintDetails(supers);//Count:  Capacity: 
             supers.Add("Wonder Woman");
             supers.Add("Aquaman");
+            supers.Add("Green Latern");//Count:4  Capacity: 4
+            supers.Add("Flash");
+            PrintDetails(supers);//Count:5  Capacity: ?
+            supers.Add("Martian Man Hunter");
+            supers.Add("Shazam");
+            supers.Add("Cyborg");
+            supers.Add("Beast Boy");//Count:9  Capacity: 16
+            PrintDetails(supers);
+
+            Console.WriteLine("List of Superheroes");
+            for (int i = 0; i < supers.Count; i++)
+            {
+                Console.WriteLine(supers[i]);
+            }
+
+            Console.ReadKey();
+        }
+        static void PrintDetails(List<string> best)
+        {
+            //Count: # of items that have been added
+            //Capacity: Length of the internal array
+            Console.WriteLine($"Count: {best.Count}\tCapacity: {best.Capacity}");
         }
     }
 }
