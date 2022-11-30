@@ -75,6 +75,31 @@ namespace Day03
                     Console.WriteLine($"{student} was not on the roster.");
             } while (true);
         }
+
+
+        public void CurveStudents()
+        {
+            if (_grades == null) FillGrades();
+            PrintGrades();
+            do
+            {
+                Console.Write("Student to curve: ");
+                string student = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(student)) break;
+
+                if (_grades.TryGetValue(student, out double grade))
+                {
+                    //ternary operator
+                    grade = (grade < 95) ? grade + 5 : 100;
+
+                    _grades[student] = grade;
+                    PrintGrades();
+                    Console.WriteLine($"{student}'s grade was curved to {grade}.");
+                }
+                else
+                    Console.WriteLine($"{student} was not on the roster.");
+            } while (true);
+        }
     }
 }
 
