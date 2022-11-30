@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace Day03
 {
@@ -8,7 +9,8 @@ namespace Day03
     {
         static void Main(string[] args)
         {
-            Course pg2 = new Course() { Name = "PG2 - 2211" };
+            DictionaryChallenge();
+            Course pg2 = new Course() { Name = "PG2 - 2212" };
 
             while (true)
             {
@@ -60,7 +62,43 @@ namespace Day03
                 }
                 else
                     break;
+                Console.ReadKey();
             }
+        }
+
+        private static void DictionaryChallenge()
+        {
+            Dictionary<string, float> menu;//null
+
+            //3 ways to add data:
+            // 1) the initializer
+            menu = new Dictionary<string, float>()
+            {
+                //{key,value} key-value-pair
+                { "spaghetti", 15.0F },
+                { "Lasagna", 23.0F },
+                { "Garlic Bread", 4.99F },
+                //{ "Garlic Bread", 6.99F }//will throw an exception
+            };
+            //2) Add(key,value)
+            menu.Add("Pizza Pizza", 10.99F);
+            try
+            {
+                menu.Add("Pizza Pizza", 13.99F);//will throw an exception
+            }
+            catch(ArgumentException aEX)
+            { }
+            catch (Exception ex)
+            {
+            }
+            menu.Add("Alfredo Pasta", 18.99F);
+            menu.Add("Salad", 8.99F);
+
+            //3) [key] = value
+            menu["Soda"] = 1.99F;
+            menu["Soda"] = 3.99F;//will NOT throw an exception. will overwrite.
+            menu["Sparkling Water"] = 2.99F;
+            menu["Chicken Parm"] = 18.99F;
         }
     }
 }
