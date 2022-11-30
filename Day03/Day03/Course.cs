@@ -31,6 +31,29 @@ namespace Day03
                 _grades.Add(student, randy.NextDouble() * 100);
             }
         }
+
+        public void PrintGrades()
+        {
+            if (_grades == null) FillGrades();
+
+            Console.WriteLine($"---------grades for {Name}--------");
+            foreach (KeyValuePair<string,double> gradeKVP in _grades)
+            {
+                Console.Write($"{gradeKVP.Key}");
+                Console.CursorLeft = 10;
+                double grade = gradeKVP.Value;
+
+                if (grade < 59.5) Console.ForegroundColor = ConsoleColor.Red;
+                else if (grade < 69.5) Console.ForegroundColor = ConsoleColor.DarkYellow;
+                else if (grade < 79.5) Console.ForegroundColor = ConsoleColor.Yellow;
+                else if (grade < 89.5) Console.ForegroundColor = ConsoleColor.Blue;
+                else Console.ForegroundColor = ConsoleColor.Green;
+
+                Console.WriteLine($"{gradeKVP.Value,7:N2}");
+
+                Console.ResetColor();
+            }
+        }
     }
 }
 

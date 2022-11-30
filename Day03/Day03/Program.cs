@@ -35,6 +35,7 @@ namespace Day03
                             //  loop over dictionary 
                             //      print student name and grade
                             //call PrintGrades here
+                            pg2.PrintGrades();
                             break;
                         case 3:
                             //Add a DropStudent method to the Course class
