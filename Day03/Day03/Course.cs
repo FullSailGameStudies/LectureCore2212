@@ -9,8 +9,28 @@ namespace Day03
     public class Course
     {
         private Dictionary<string, double> _grades;
+        private List<string> roster = new List<string>()
+        {
+            "Ethan", "Shaun", "Jason", "Parker", "Adam", "Gustavo",
+            "Anthony", "Johnathan", "Zoleda", "Kemarly", "Taylor",
+            "Joshua", "Josiah", "Steven", "Jordan", "Jacob",
+            "Christopher", "Carlos", "Derrick", "Victor", "Julio",
+            "Colyn", "Christian", "Cameron", "Daniel", "Trinity",
+            "George", "Douglas", "Chase", "Steve", "Jymeer", "Xavier",
+            "Tameka", "Quintin", "Josh"
+        };
 
         public string Name { get; set; } = String.Empty;
+
+        public void FillGrades()
+        {
+            _grades = new Dictionary<string, double>();
+            Random randy = new Random();
+            foreach (string student in roster)
+            {
+                _grades.Add(student, randy.NextDouble() * 100);
+            }
+        }
     }
 }
 

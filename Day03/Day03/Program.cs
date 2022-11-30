@@ -10,6 +10,7 @@ namespace Day03
         static void Main(string[] args)
         {
             DictionaryChallenge();
+            Console.ReadKey();
             Course pg2 = new Course() { Name = "PG2 - 2212" };
 
             while (true)
@@ -27,6 +28,7 @@ namespace Day03
                             //  initialize the dictionary
                             //  add students and grades
                             //call FillGrades here 
+                            pg2.FillGrades();
                             break;
                         case 2:
                             //Add a method PrintGrades to the Course class
@@ -99,6 +101,20 @@ namespace Day03
             menu["Soda"] = 3.99F;//will NOT throw an exception. will overwrite.
             menu["Sparkling Water"] = 2.99F;
             menu["Chicken Parm"] = 18.99F;
+
+            PrintMenu(menu);
+        }
+
+        private static void PrintMenu(Dictionary<string, float> menu)
+        {
+            foreach (KeyValuePair<string,float> menuItem in menu)
+            {
+                string itemName = menuItem.Key;
+                float price = menuItem.Value;
+                //,6 - right-aligned in 6 spaces
+                //:C2  currency with 2 decimal places
+                Console.WriteLine($"{price,6:C2} {itemName} ");
+            }
         }
     }
 }
