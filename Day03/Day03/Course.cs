@@ -58,7 +58,7 @@ namespace Day03
         public void DropStudents()
         {
             if (_grades == null) FillGrades();
-
+            PrintGrades();
             do
             {
                 Console.Write("Student to drop: ");
