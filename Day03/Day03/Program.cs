@@ -17,7 +17,7 @@ namespace Day03
             {
                 Console.Clear();
                 int part = 1;
-                Console.Write("What part to run?\n0. Exit\n1. Part 1 - Creating and Adding\n2. Part 2 - Looping\n3. Part 3 - Removing\n4. Part 4 - Cloning\n5. Extras\nChoice? ");
+                Console.Write("What part to run?\n0. Exit\n1. Part 1 - Creating and Adding\n2. Part 2 - Looping\n3. Part 3 - Removing\n4. Part 4 - Updating\n5. Extras\nChoice? ");
                 string input = Console.ReadLine();
                 if (int.TryParse(input, out part) && part > 0 && part < 6)
                 {
@@ -56,6 +56,7 @@ namespace Day03
                             //          call PrintGrades
                             //      else
                             //          print error message
+                            pg2.CurveStudents();
                             break;
                         case 5:
                             ExtraChallenges.Run();
