@@ -45,6 +45,7 @@ namespace Day03
                             //      print message indicating what happened
                             //          error message if not found
                             //      else call printgrades and print that the student was removed
+                            pg2.DropStudents();
                             break;
                         case 4:
                             //Add a CurveStudent method to the Course class
@@ -104,10 +105,23 @@ namespace Day03
             menu["Chicken Parm"] = 18.99F;
 
             PrintMenu(menu);
+
+            string itemToRemove = "Salad";
+            bool wasRemoved = menu.Remove(itemToRemove);
+
+            itemToRemove = "Cheeseburger";
+            wasRemoved = menu.Remove(itemToRemove);
+            if(wasRemoved)
+                Console.WriteLine($"{itemToRemove} was dropped from the menu.");
+            else
+                Console.WriteLine($"{itemToRemove} was NOT on the menu.");
+
+            PrintMenu(menu);
         }
 
         private static void PrintMenu(Dictionary<string, float> menu)
         {
+            Console.WriteLine("--------It don't matter Menu--------");
             foreach (KeyValuePair<string,float> menuItem in menu)
             {
                 string itemName = menuItem.Key;

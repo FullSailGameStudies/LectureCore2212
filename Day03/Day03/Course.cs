@@ -54,6 +54,27 @@ namespace Day03
                 Console.ResetColor();
             }
         }
+
+        public void DropStudents()
+        {
+            if (_grades == null) FillGrades();
+
+            do
+            {
+                Console.Write("Student to drop: ");
+                string student = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(student)) break;
+
+                bool wasDropped = _grades.Remove(student);
+                if(wasDropped)
+                {
+                    PrintGrades();
+                    Console.WriteLine($"{student} was dropped.");
+                }
+                else
+                    Console.WriteLine($"{student} was not on the roster.");
+            } while (true);
+        }
     }
 }
 
