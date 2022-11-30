@@ -117,6 +117,24 @@ namespace Day03
                 Console.WriteLine($"{itemToRemove} was NOT on the menu.");
 
             PrintMenu(menu);
+
+            string itemToFind = "Salad";
+            //2 ways to check for a key
+            //  1) ContainsKey(key)
+            if(menu.ContainsKey(itemToFind))
+                Console.WriteLine($"{itemToFind} costs {menu[itemToFind]}");//keynotfound exception!
+            
+            //  2) TryGetValue(key, out value)
+            if(menu.TryGetValue(itemToFind, out float price))
+                Console.WriteLine($"{itemToFind} costs {price}");
+
+            itemToFind = "Chicken Parm";
+            if (menu.TryGetValue(itemToFind, out price))
+            {
+                price *= 1.25F;
+                menu[itemToFind] = price;//overwrite the value
+                Console.WriteLine($"{itemToFind} now costs {price}! Thanks Putin!!");
+            }
         }
 
         private static void PrintMenu(Dictionary<string, float> menu)
