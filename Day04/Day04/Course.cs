@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,40 @@ namespace Day04
         public Course()
         {
             FillGrades();
+        }
+
+        public void SaveGrades()
+        {
+            string filePath = "coursegrades.csv";
+            using (StreamWriter sw = new StreamWriter(filePath))
+            {
+                char delimiter = '^';
+                foreach (var grade in _grades)
+                {
+                    sw.Write(grade.Key);
+                    sw.Write(delimiter);
+                    sw.WriteLine(grade.Value);
+                }
+            }
+        }
+
+        public void LoadGrades()
+        {
+            _grades.Clear();
+            string filePath = "coursegrades.csv";
+            if (File.Exists(filePath))
+            {
+                string fileData = File.ReadAllText(filePath);
+                string[] kvps = fileData.Split('\n', StringSplitOptions.RemoveEmptyEntries);
+                foreach (var kvp in kvps)
+                {
+                    string[] keyValue = kvp.Split('^');
+                    if (double.TryParse(keyValue[1], out double grade))
+                    {
+                        _grades[keyValue[0]] = grade;
+                    }
+                }
+            }
         }
 
 

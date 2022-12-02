@@ -1,10 +1,22 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
 namespace Day04
 {
+    enum Power
+    {
+        Flight, Speed, Strength, Money, Telepathy, Swimming
+    }
+    class Superhero
+    {
+        public string Name { get; set; }
+        public string SecretIdentity { get; set; }
+        public Power Superpower { get; set; }
+    }
+
     internal class Program
     {
         static void Main(string[] args)
@@ -43,6 +55,27 @@ namespace Day04
 
             #endregion
 
+            List<Superhero> JLA = new List<Superhero>();
+            JLA.Add(new Superhero() { Name = "Batman", Superpower = Power.Money, SecretIdentity = "Bruce Wayne" });
+            JLA.Add(new Superhero() { Name = "Superman", Superpower = Power.Flight, SecretIdentity = "Clark Kent" });
+            JLA.Add(new Superhero() { Name = "Wonder Woman", Superpower = Power.Strength, SecretIdentity = "Diana Prince" });
+            JLA.Add(new Superhero() { Name = "Green Lantern", Superpower = Power.Telepathy, SecretIdentity = "Hal Jordan" });
+            JLA.Add(new Superhero() { Name = "Aquaman", Superpower = Power.Swimming, SecretIdentity = "Arthur Curry" });
+
+            // Serializing
+            //change the extension to .json
+            fileName = Path.ChangeExtension(fileName, "json");
+            using (StreamWriter sw = new StreamWriter(fileName))
+            {
+                using (JsonTextWriter jtw = new JsonTextWriter(sw))
+                {
+                    jtw.Formatting = Formatting.Indented;
+                    JsonSerializer serializer = new JsonSerializer();
+                    serializer.Serialize(jtw, JLA);
+                }
+            }
+
+
 
             Course pg2 = new Course() { Name = "PG2 - 2212" };
 
@@ -69,13 +102,16 @@ namespace Day04
                         case 1:
                             //Add a method SaveGrades to the Course class
                             //  save the dictionary to a csv file
-                            //call SaveGrades here 
+                            //call SaveGrades here
+                            pg2.SaveGrades();
                             break;
                         case 2:
                             //Add a method LoadGrades to the Course class
                             //  clear the _grades dictionary
                             //  load the dictionary data from the csv file
                             //call LoadGrades here
+                            pg2.LoadGrades();
+                            pg2.PrintGrades();
                             break;
                         case 3:
                             //Add a SerializeGrades method to the Course class
