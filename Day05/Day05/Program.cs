@@ -10,6 +10,27 @@ namespace Day04
         static void Main(string[] args)
         {
             Console.ReadKey();
+            List<int> ints = new() { 5, 13, 420, 7, 1 };
+            foreach (int i in ints)
+                Console.Write($"{i} ");
+            Console.WriteLine();
+            BubbleSort(ints);
+            foreach (int i in ints)
+                Console.Write($"{i} ");
+            Console.WriteLine();
+            Console.ReadKey();
+
+            string s1 = "Batman", s2 = "Bats";
+            //CompareTo
+            //  -1  means LESS THAN
+            //   0  means EQUALS TO
+            //   1  means GREATER THAN
+            int compResult = s1.CompareTo(s2);
+            if (compResult == 0) { Console.WriteLine($"{s1} EQUALS {s2}"); }
+            else if (compResult < 0) { Console.WriteLine($"{s1} LESS THAN {s2}"); }
+            else if (compResult > 0) { Console.WriteLine($"{s1} GREATER THAN {s2}"); }
+            Console.ReadKey();
+
             for (int i = 0; i < 1000; i++)
             {
 
@@ -22,7 +43,7 @@ namespace Day04
             string[] menu = new string[]
             {"0. Exit", "1. Part 1 - Bats", "2. Part 2 - Fibonacci", "3. Part 3 - Swap", "4. Part 4 - Split"};
 
-            int part = 1;
+            int part;
             while (true)
             {
                 Console.Clear();
@@ -104,7 +125,7 @@ namespace Day04
                             */
 
                             //Call Split from main with a list of ints
-                            List<int> nums = new List<int>() { 5, 7, 1, 3, 13 };
+                            List<int> nums = new() { 5, 7, 1, 3, 13 };
                             break;
                         default:
                             break;
@@ -158,6 +179,29 @@ namespace Day04
                 Console.Write(' ');
                 //Thread.Sleep(50);
             }
+        }
+
+        public static void BubbleSort(List<int> A)//classes are reference types
+        {
+            int n = A.Count;
+            bool swapped;
+            do
+            {
+                swapped = false;
+                for (int i = 1; i <= n-1; i++)
+                {
+                    if (A[i - 1] > A[i])//items in wrong order
+                    {
+                        //swap(A[i - 1], A[i]);
+                        //int temp = A[i - 1];
+                        //A[i - 1] = A[i];
+                        //A[i] = temp;
+                        (A[i], A[i - 1]) = (A[i - 1], A[i]);
+                        swapped = true;
+                    }
+                }
+                --n;
+            } while (swapped);
         }
     }
 }
