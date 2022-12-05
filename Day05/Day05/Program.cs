@@ -126,6 +126,7 @@ namespace Day04
 
                             //Call Split from main with a list of ints
                             List<int> nums = new() { 5, 7, 1, 3, 13 };
+                            Split(nums);
                             break;
                         default:
                             break;
@@ -135,6 +136,27 @@ namespace Day04
                     break;
                 Console.ReadKey();
             }
+        }
+
+        private static void Split(List<int> nums)
+        {
+            List<int> Left = new();
+            List<int> Right = new();
+            int mid = nums.Count / 2;
+            for (int i = 0; i < nums.Count; i++)
+            {
+                if (i < mid) Left.Add(nums[i]);
+                else Right.Add(nums[i]);
+            }
+            PrintList(Left, "LEFT");
+            PrintList(Right, "RIGHT");
+        }
+
+        private static void PrintList(List<int> nums, string header)
+        {
+            Console.WriteLine(header);
+            foreach(int i in nums)
+                Console.WriteLine(i);
         }
 
         private static void Bats(int i)
