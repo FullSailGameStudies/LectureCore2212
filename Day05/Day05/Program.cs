@@ -181,26 +181,26 @@ namespace Day04
             }
         }
 
-        public static void BubbleSort(List<int> A)//classes are reference types
+        public static void BubbleSort(List<int> unsorted)//classes are reference types
         {
-            int n = A.Count;
+            int numberOfItems = unsorted.Count;
             bool swapped;
             do
             {
                 swapped = false;
-                for (int i = 1; i <= n-1; i++)
+                for (int i = 1; i <= numberOfItems-1; i++)
                 {
-                    if (A[i - 1] > A[i])//items in wrong order
+                    if (unsorted[i - 1] > unsorted[i])//items in wrong order
                     {
                         //swap(A[i - 1], A[i]);
                         //int temp = A[i - 1];
                         //A[i - 1] = A[i];
                         //A[i] = temp;
-                        (A[i], A[i - 1]) = (A[i - 1], A[i]);
+                        (unsorted[i], unsorted[i - 1]) = (unsorted[i - 1], unsorted[i]);
                         swapped = true;
                     }
                 }
-                --n;
+                --numberOfItems;
             } while (swapped);
         }
     }
