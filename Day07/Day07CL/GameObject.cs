@@ -18,6 +18,7 @@ namespace Day07CL
         //  compound word: first word starts with lowercase, all others start with uppercase
         //  _  helps set it aside from local variables and parameters
         private int _x = 0, _y = 0;
+        private static int _numberOfGameObjects = 0;
         #endregion
 
         #region Properties
@@ -31,9 +32,10 @@ namespace Day07CL
 
             //same as...
             //public void SetX(int value) {_x = value;}
-            set { 
-                if(value >=0 && value < Console.WindowWidth)
-                    _x = value; 
+            set
+            {
+                if (value >= 0 && value < Console.WindowWidth)
+                    _x = value;
             }//value is a keyword
         }
         public int Y
@@ -70,9 +72,27 @@ namespace Day07CL
             X = x;
             Y = y;
             Color = color;
+            _numberOfGameObjects++;
         }
 
 
+        #endregion
+
+        #region Methods
+        //instance (non-static) method
+        public void MoveRight()//there's a hidden parameter called 'this'
+        {
+            if (this.X == Console.WindowWidth - 1)
+                X = 0;
+            else
+                X++;
+        }
+
+        public static void DebugInfo()
+        {
+            Console.SetCursorPosition(0,0);
+            Console.WriteLine($"# of game objs: {_numberOfGameObjects}");
+        }
         #endregion
     }
 }
