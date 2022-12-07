@@ -31,6 +31,7 @@ namespace Day07
 
             Person me = new Person(25, "Bruce Wayne");
             me.ItsMyBirthday();
+            me.Promotion(JobPosition.CEO);
         }
     }
 }

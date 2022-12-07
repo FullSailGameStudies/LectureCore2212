@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Day07CL
 {
+
     public class Person
     {
         #region Fields
@@ -54,5 +55,40 @@ namespace Day07CL
         //      pass in a parameter for the new position
         //      update the property and print out the new position
 
+        public JobPosition Position { get; private set; } = JobPosition.Intern;
+
+        public void Promotion(JobPosition newPosition)
+        {
+            Position = newPosition;
+            switch (Position)
+            {
+                case JobPosition.Intern:
+                    Console.WriteLine("I'm a lowly intern! Let me get you some coffee.");
+                    break;
+                case JobPosition.JuniorDeveloper:
+                    Console.WriteLine("I got a job dad!");
+                    break;
+                case JobPosition.Developer:
+                    Console.WriteLine("I can't believe they promoted me.");
+                    break;
+                case JobPosition.SeniorDeveloper:
+                    Console.WriteLine("I'm a GOD!!!!!");
+                    break;
+                case JobPosition.LeadDeveloper:
+                    Console.WriteLine("Just let me do it. Get out of my way.");
+                    break;
+                case JobPosition.VicePresident:
+                    Console.WriteLine("I forgot everything about programming. Listen to me now!");
+                    break;
+                case JobPosition.President:
+                    Console.WriteLine("Don't talk to me. You are beneath me.");
+                    break;
+                case JobPosition.CEO:
+                    Console.WriteLine("I make 10 million times more than you do. I'm going on vacation.");
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }
