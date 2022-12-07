@@ -142,7 +142,7 @@ namespace Day04
         {
             List<int> Left = new();
             List<int> Right = new();
-            int mid = nums.Count / 2;
+            int mid = nums.Count / 2;//calc the middle index
             for (int i = 0; i < nums.Count; i++)
             {
                 if (i < mid) Left.Add(nums[i]);
