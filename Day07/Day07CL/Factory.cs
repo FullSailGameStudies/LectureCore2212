@@ -29,5 +29,10 @@ namespace Day07CL
         //
         //add a factory method to create Person instances
         //
+        public static Person MakePerson(int age, string fullName)
+        {
+            Person peep = new Person(age, fullName);
+            return peep;
+        }
     }
 }

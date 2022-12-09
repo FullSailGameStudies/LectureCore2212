@@ -23,7 +23,7 @@ namespace Day07
             //gameObj.Color = ConsoleColor.DarkYellow;
             Console.WriteLine(gameObj.Color);
 
-            GameObject player = new GameObject(20, 10, ConsoleColor.Yellow);
+            Player player = new Player('$', 20, 10, ConsoleColor.Yellow);
             gameObj.MoveRight();
             player.MoveRight();//player is passed in as the 'this' parameter
             

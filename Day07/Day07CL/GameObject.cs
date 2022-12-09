@@ -17,7 +17,7 @@ namespace Day07CL
         // _camelCasingNamingConvention
         //  compound word: first word starts with lowercase, all others start with uppercase
         //  _  helps set it aside from local variables and parameters
-        private int _x = 0, _y = 0;
+        protected int _x = 0, _y = 0;
         private static int _numberOfGameObjects = 0;
         #endregion
 
