@@ -32,6 +32,42 @@ namespace Day07
             Person me = new Person(25, "Bruce Wayne");
             me.ItsMyBirthday();
             me.Promotion(JobPosition.CEO);
+
+            int smallNum = 5;
+            long bigNum = smallNum;//implicit cast
+            smallNum = (int)bigNum;//explicit cast
+
+            Grenade bomb = new Grenade(10, 50, 100);
+
+            // UPCASTING
+            // going from a DERIVED type (Grenade) casting to a BASE type (Weapon)
+            // ALWAYS SAFE!!
+            Weapon handWeapon = bomb;
+            player.PickupItem(bomb);//upcasts to a Weapon
+            player.PickupItem(new Pistol(25, 25, 50, 25));
+
+            //DOWNCASTING
+            // going from a BASE type (Weapon) casting to a DERIVED type (Grenade)
+            // !!!! NOT SAFE !!!!
+            // 3 ways: explicit cast, as keyword, pattern matching
+
+            //1) explicit cast with try-catch
+            try
+            {
+                Pistol walter = (Pistol)handWeapon;
+            }
+            catch (Exception)
+            {
+            }
+
+            //2) 'as' keyword
+            Pistol bang = handWeapon as Pistol;//will assign NULL to bang if it can't be downcasted
+            if(bang != null)
+                Console.WriteLine(bang.MagCapacity);
+
+            //3) pattern matching using the 'is' keyword
+            if(handWeapon is Pistol colt)
+                Console.WriteLine(colt.MagCapacity);
         }
     }
 }
