@@ -21,5 +21,24 @@ namespace Day07CL
         {
             _weapons.Add(weapon);
         }
+
+        //
+        //create a method to display your inventory (list of weapons)
+        // print the weapon info
+        //  if it's a pistol, print the pistol info
+        //  if it's a grenade, print the grenade info
+        //
+        public void Inventory()
+        {
+            foreach (Weapon weapon in _weapons)
+            {
+                Console.WriteLine($"Range: {weapon.Range} Damage: {weapon.Damage}");
+                //Downcast
+                if(weapon is Pistol pistol)
+                    Console.WriteLine($"\tMagazing Capacity: {pistol.MagCapacity} Number of round: {pistol.Rounds}");
+                else if (weapon is Grenade grenade)
+                    Console.WriteLine($"\tBlast Radius: {grenade.BlastRadius}");
+            }
+        }
     }
 }

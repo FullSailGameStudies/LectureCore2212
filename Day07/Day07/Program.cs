@@ -68,6 +68,8 @@ namespace Day07
             //3) pattern matching using the 'is' keyword
             if(handWeapon is Pistol colt)
                 Console.WriteLine(colt.MagCapacity);
+
+            player.Inventory();
         }
     }
 }
