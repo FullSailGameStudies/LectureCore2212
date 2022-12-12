@@ -22,6 +22,17 @@ namespace Day07CL
             _weapons.Add(weapon);
         }
 
+        //override DrawMe
+        public override void DrawMe()
+        {
+            //FULLY OVERRIDING the base if you don't call it
+            //base.DrawMe();//EXTENDING the base
+            Console.SetCursorPosition(X, Y);
+            Console.BackgroundColor = Color;
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.Write(Symbol);
+        }
+
         //
         //create a method to display your inventory (list of weapons)
         // print the weapon info
@@ -32,13 +43,18 @@ namespace Day07CL
         {
             foreach (Weapon weapon in _weapons)
             {
-                Console.WriteLine($"Range: {weapon.Range} Damage: {weapon.Damage}");
-                //Downcast
-                if(weapon is Pistol pistol)
-                    Console.WriteLine($"\tMagazing Capacity: {pistol.MagCapacity} Number of round: {pistol.Rounds}");
-                else if (weapon is Grenade grenade)
-                    Console.WriteLine($"\tBlast Radius: {grenade.BlastRadius}");
+                weapon.ShowMe();
+                //Console.WriteLine($"Range: {weapon.Range} Damage: {weapon.Damage}");
+                ////Downcast
+                //if(weapon is Pistol pistol)
+                //    Console.WriteLine($"\tMagazing Capacity: {pistol.MagCapacity} Number of round: {pistol.Rounds}");
+                //else if (weapon is Grenade grenade)
+                //    Console.WriteLine($"\tBlast Radius: {grenade.BlastRadius}");
             }
         }
+        // create a ShowMe method is Weapon
+        //      print the weapon info
+        // OVERRIDE it in Grenade/Pistol to show the Grenade/Pistol info
+        // FIX Inventory to remove the Downcasting
     }
 }

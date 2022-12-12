@@ -79,6 +79,12 @@ namespace Day07CL
         #endregion
 
         #region Methods
+        public virtual void DrawMe()
+        {
+            Console.SetCursorPosition(X, Y);
+            Console.BackgroundColor = Color;
+            Console.Write(" ");
+        }
         //instance (non-static) method
         public void MoveRight()//there's a hidden parameter called 'this'
         {

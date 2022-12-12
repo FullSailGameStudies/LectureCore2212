@@ -22,5 +22,10 @@ namespace Day07CL
 
         public int Range { get; }
         public int Damage { get; }
+
+        public virtual void ShowMe()
+        {
+            Console.WriteLine($"Range: {Range} Damage: {Damage}");
+        }
     }
 }

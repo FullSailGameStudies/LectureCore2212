@@ -16,5 +16,13 @@ namespace Day07CL
 
         public int MagCapacity { get; }
         public int Rounds { get; }
+
+        public override void ShowMe()
+        {
+            base.ShowMe(); 
+            Console.WriteLine($"\tMagazing Capacity: {MagCapacity} Number of round: {Rounds}");
+
+
+        }
     }
 }

@@ -14,5 +14,12 @@ namespace Day07CL
         }
 
         public int BlastRadius { get; }
+
+        public override void ShowMe()
+        {
+            base.ShowMe(); 
+            Console.WriteLine($"\tBlast Radius: {BlastRadius}");
+
+        }
     }
 }

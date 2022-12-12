@@ -60,6 +60,7 @@ namespace Day07CL
         public void Promotion(JobPosition newPosition)
         {
             Position = newPosition;
+            Position.SetColor();
             switch (Position)
             {
                 case JobPosition.Intern:
@@ -89,6 +90,7 @@ namespace Day07CL
                 default:
                     break;
             }
+            Console.ResetColor();
         }
     }
 }

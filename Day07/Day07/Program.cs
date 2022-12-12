@@ -70,6 +70,30 @@ namespace Day07
                 Console.WriteLine(colt.MagCapacity);
 
             player.Inventory();
+
+            Console.ReadKey();
+            Console.Clear();
+
+            List<GameObject> gameObjs = new List<GameObject>();
+            for (int i = 0; i < 20; i++)
+            {
+                gameObjs.Add(Factory.RandomSpawn());
+            }
+            gameObjs.Add(player);
+
+            while (true)
+            {
+                Drawobjects(gameObjs);
+                Console.ReadKey();
+            }
+        }
+
+        private static void Drawobjects(List<GameObject> gameObjs)
+        {
+            foreach (GameObject gameObj in gameObjs)
+            {
+                gameObj.DrawMe();
+            }
         }
     }
 }
